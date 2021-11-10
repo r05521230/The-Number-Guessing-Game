@@ -30,16 +30,38 @@ def start_game():
     ( You can add more features/enhancements if you'd like to. )
     """
     # write your code inside this function.
+    
     print('Hollo. Welcome to play guessing game')
-    num_min, num_max = 0, 10
+    print('If you geuss less than 3 times. You\'ll get high point!')
+    num_min, num_max = 1, 10
     answer = random.randrange(num_min,num_max+1)
-    now = input('Guess the number is between {num_min} and {num_max}')
+    print(answer)
 
-
-
-
-
-
+    total = 0
+    while True:
+      guess = int(input(f'Guess the number. It\'s between {num_min} and {num_max}'))
+      total += 1
+      if guess < num_min or guess > num_max:
+        print('Out of the range. Try again.')
+      elif guess == answer:
+        print(f'Bingo! You totally tried {total} times.')
+        break
+      elif guess > answer:
+        num_max = guess
+        print('It\'s lower.')
+      elif guess < answer:
+        num_min = guess
+        print('It\'s higher.')        
+    
+    again = input('Do you want to play again? YES? or NO?')
+    print(again)
+    if again.lower() == 'yes':
+        print('OK Try a new noe.')
+        start_game()
+    elif again.lower() == 'no':
+        print('Bye Have a nice day.')
+      
 
 # Kick off the program by calling the start_game function.
 start_game()
+
