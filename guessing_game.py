@@ -35,7 +35,6 @@ def start_game():
     print('If you geuss less than 3 times. You\'ll get high point!')
     num_min, num_max = 1, 10
     answer = random.randrange(num_min,num_max+1)
-    print(answer)
 
     total = 0
     while True:
@@ -54,7 +53,6 @@ def start_game():
         print('It\'s higher.')        
     
     again = input('Do you want to play again? YES? or NO?')
-    print(again)
     if again.lower() == 'yes':
         print('OK Try a new noe.')
         start_game()
