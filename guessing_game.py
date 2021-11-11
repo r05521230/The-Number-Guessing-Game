@@ -8,7 +8,6 @@ For this first project we will be using Workspaces.
 NOTE: If you strongly prefer to work locally on your own computer, you can totally do that by clicking: File -> Download Workspace in the file menu after you fork the snapshot of this workspace.
 
 """
-
 import random
 
 
@@ -38,28 +37,40 @@ def start_game():
 
     total = 0
     while True:
-      guess = int(input(f'Guess the number. It\'s between {num_min} and {num_max}'))
-      total += 1
-      if guess < num_min or guess > num_max:
-        print('Out of the range. Try again.')
-      elif guess == answer:
-        print(f'Bingo! You totally tried {total} times.')
-        break
-      elif guess > answer:
-        num_max = guess
-        print('It\'s lower.')
-      elif guess < answer:
-        num_min = guess
-        print('It\'s higher.')        
-    
-    again = input('Do you want to play again? YES? or NO?')
-    if again.lower() == 'yes':
-        print('OK Try a new noe.')
-        start_game()
-    elif again.lower() == 'no':
-        print('Bye Have a nice day.')
-      
+      try:
+        guess = int(input(f'Guess the number. It\'s between {num_min} and {num_max}'))
+      except ValueError:
+        print('That is not a valid value. Please try again.')
 
+      else:
+        total += 1
+        if guess < num_min or guess > num_max:
+          print('Out of the range. Please try again.')
+        elif guess == answer:
+          print(f'Bingo! You totally tried {total} times.')
+          break
+        elif guess > answer:
+          num_max = guess
+          print('It\'s lower.')
+        elif guess < answer:
+          num_min = guess
+          print('It\'s higher.')        
+    
+    while True:
+      try:
+        again = input('Do you want to play again? YES? or NO?')
+      except:
+        print('That is not a valid value. Please try again.')
+      else:
+        if again.lower() == 'yes':
+          print('OK Try a new noe.')
+          start_game()
+        elif again.lower() == 'no':
+          print('Bye Have a nice day.')
+          break
+        else:
+          print('That is not a valid value. Please try again.')
+        
+        
 # Kick off the program by calling the start_game function.
 start_game()
-
