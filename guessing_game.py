@@ -41,7 +41,7 @@ def start_game():
         guess = int(input(f'Guess the number. It\'s between {num_min} and {num_max}'))
       except ValueError:
         print('That is not a valid value. Please try again.')
-
+        raise
       else:
         total += 1
         if guess < num_min or guess > num_max:
@@ -54,7 +54,12 @@ def start_game():
           print('It\'s lower.')
         elif guess < answer:
           num_min = guess
-          print('It\'s higher.')        
+          print('It\'s higher.')
+      finally:
+        print('finally')
+
+      print('where am I')
+      
     
     while True:
       try:
